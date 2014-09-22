@@ -8,10 +8,7 @@ module.exports = function(source) {
     }
 
     return 'var H = require("hogan.js");\n' +
-           'module.exports = function() { ' +
-           'var T = new H.Template(' +
-           Hogan.compile(source, { asString: true }) +
-           ', ' +
-           JSON.stringify(source) +
-           ', H); return T.render.apply(T, arguments); };';
+           'module.exports = new H.Template(' + 
+                Hogan.compile(source, { asString: true }) +
+                ', ' + JSON.stringify(source) + ', H);';
 };
